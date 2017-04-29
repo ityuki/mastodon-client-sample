@@ -40,7 +40,7 @@ req.set_form_data({'grant_type' => 'authorization_code', 'redirect_uri' => 'urn:
 res = http.request(req)
 
 json = JSON.parse(res.body)
-\
+
 File.open("mclient.token","w"){|f|
   f.puts json['access_token']
 }

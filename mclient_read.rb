@@ -37,8 +37,8 @@ http = Net::HTTP.new(uri.host, uri.port,proxy_uri['addr'],proxy_uri['port'],prox
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE # :P
 req = Net::HTTP::Get.new(uri.path);
-req['Authorization'] = "Bearer " + token
-req.set_form_data({'local' => ''})
+#req['Authorization'] = "Bearer " + token
+req.set_form_data({'local' => '','bearer_token' => token})
 res = http.request(req)
 
 json = JSON.parse(res.body)

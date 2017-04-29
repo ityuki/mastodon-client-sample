@@ -37,9 +37,9 @@ http = Net::HTTP.new(uri.host, uri.port,proxy_uri['addr'],proxy_uri['port'],prox
 http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE # :P
 req = Net::HTTP::Post.new(uri.path);
-req['Authorization'] = "Bearer " + token
+#req['Authorization'] = "Bearer " + token
 puts "write :"
 input = gets
-req.set_form_data({'status' => input.encode("UTF-8"), 'visibility' => 'public'})
+req.set_form_data({'status' => input.encode("UTF-8"), 'visibility' => 'public','bearer_token' => token})
 res = http.request(req)
 
