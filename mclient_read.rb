@@ -15,10 +15,6 @@ client_id = nil
 client_secret = nil
 token = nil
 
-File.open("mclient.id","r"){|f|
-  client_id = f.gets.chomp
-  client_secret = f.gets.chomp
-}
 File.open("mclient.token","r"){|f|
   token = f.gets.chomp
 }
