@@ -53,5 +53,5 @@ ruby mclient_write.rb
 * 書きます
 
 ## cacert.pem is 何
-* http://curl.haxx.se/ca/cacert.pemからダウンロードしたファイルです
+* http://curl.haxx.se/ca/cacert.pem からダウンロードしたファイルです
 
