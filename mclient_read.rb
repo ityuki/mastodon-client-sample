@@ -7,6 +7,8 @@ http_proxy = nil
 # use HTTPS
 mastodon_server = "mstdn-workers.com"
 
+ENV["SSL_CERT_FILE"] = "cacert.pem"
+
 require 'net/https'
 require 'uri'
 require 'json'
@@ -31,7 +33,6 @@ if (http_proxy != nil)
 end
 http = Net::HTTP.new(uri.host, uri.port,proxy_uri['addr'],proxy_uri['port'],proxy_uri['user'],proxy_uri['pass'])
 http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE # :P
 req = Net::HTTP::Get.new(uri.path);
 #req['Authorization'] = "Bearer " + token
 req.set_form_data({'local' => '','bearer_token' => token})

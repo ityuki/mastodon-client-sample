@@ -8,6 +8,8 @@ client_name = "mclient"
 # use HTTPS
 mastodon_server = "mstdn-workers.com"
 
+ENV["SSL_CERT_FILE"] = "cacert.pem"
+
 require 'net/https'
 require 'uri'
 require 'json'
@@ -23,7 +25,6 @@ if (http_proxy != nil)
 end
 http = Net::HTTP.new(uri.host, uri.port,proxy_uri['addr'],proxy_uri['port'],proxy_uri['user'],proxy_uri['pass'])
 http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE # :P
 req = Net::HTTP::Post.new(uri.path)
 req.set_form_data({'client_name' => client_name, 'redirect_uris' => 'urn:ietf:wg:oauth:2.0:oob', 'scopes' => 'read write'})
 res = http.request(req)
